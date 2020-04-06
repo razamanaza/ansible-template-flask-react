@@ -1,0 +1,35 @@
+---
+
+- name: Install OS packages
+  become: yes
+  apt:
+    name: [
+      'python3',
+      'python3-pip',
+      'mongodb',
+      'python3-pymongo'
+    ]
+    state: present
+
+- name: Intall python packages
+  pip:
+    executable: pip3
+    name:
+      - Flask
+      - mongoengine
+
+- name: create administrative user
+  mongodb_user:
+    database: admin
+    name: admin
+    password: 12345
+    roles: "userAdminAnyDatabase"
+
+- name: create project user
+  mongodb_user:
+    database: countries
+    login_user: admin
+    login_password: 12345
+    name: student
+    password: 12345
+    roles: "readWrite"
