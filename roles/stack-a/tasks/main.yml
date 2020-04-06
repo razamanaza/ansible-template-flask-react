@@ -24,6 +24,8 @@
     name: admin
     password: 12345
     roles: "userAdminAnyDatabase"
+  notify:
+    - reload mongodb
 
 - name: create project user
   mongodb_user:

@@ -1,0 +1,27 @@
+---
+
+- name: Add node repo key
+  become: yes
+  apt_key:
+    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+    state: present
+
+- name: Add node 12 ppa
+  become: yes
+  apt_repository:
+    repo: deb https://deb.nodesource.com/node_12.x xenial main
+    filename: nodesource.list
+    state: present
+    update_cache: yes
+
+- name: Install node.js
+  become: yes
+  apt:
+    name: nodejs
+    state: present
+
+- name: Install global npm packages
+  become: yes
+  npm:
+    name: express-generator
+    global: yes
