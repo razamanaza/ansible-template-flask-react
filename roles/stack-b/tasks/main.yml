@@ -23,5 +23,9 @@
 - name: Install global npm packages
   become: yes
   npm:
-    name: express-generator
+    name: '{{ item }}'
     global: yes
+  with_items:
+    - express-generator
+    - babel-cli
+    - babel-preset-react-app
