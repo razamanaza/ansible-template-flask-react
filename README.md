@@ -1,1 +1,5 @@
-A simple ansible playbook to install all requrements for web3 projects
+An ansible template for deploying:
+
+[flask-backend](https://github.com/razamanaza/flask-backend)
+
+[react-frontend](https://github.com/razamanaza/react-frontend)
